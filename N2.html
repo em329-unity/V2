@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Network with Sigma.js</title>
+  <style>
+    /* Container for the graph */
+    #graph-container {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <!-- Include Sigma.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/sigma@2.2.2/build/sigma.min.js"></script>
+</head>
+<body>
+
+  <h1>Simple Network with Sigma.js</h1>
+
+  <!-- The container where the graph will be rendered -->
+  <div id="graph-container"></div>
+
+  <script>
+    // Create the graph instance
+    const graph = new sigma.graph();
+
+    // Add nodes
+    graph.addNode({
+      id: 'n0',
+      label: 'Node 0',
+      x: 0,
+      y: 0,
+      size: 10,
+      color: '#FF5733'  // Red color for node 0
+    });
+
+    graph.addNode({
+      id: 'n1',
+      label: 'Node 1',
+      x: 1,
+      y: 1,
+      size: 10,
+      color: '#33FF57'  // Green color for node 1
+    });
+
+    graph.addNode({
+      id: 'n2',
+      label: 'Node 2',
+      x: 1,
+      y: -1,
+      size: 10,
+      color: '#3357FF'  // Blue color for node 2
+    });
+
+    // Add edges to connect nodes
+    graph.addEdge({
+      id: 'e0',
+      source: 'n0',
+      target: 'n1',
+      size: 2,
+      color: '#000000'  // Black color for edges
+    });
+
+    graph.addEdge({
+      id: 'e1',
+      source: 'n1',
+      target: 'n2',
+      size: 2,
+      color: '#000000'  // Black color for edges
+    });
+
+    graph.addEdge({
+      id: 'e2',
+      source: 'n2',
+      target: 'n0',
+      size: 2,
+      color: '#000000'  // Black color for edges
+    });
+
+    // Initialize Sigma.js with the graph and the container
+    const sigmaInstance = new sigma({
+      graph: graph,
+      container: 'graph-container',
+      settings: {
+        defaultNodeColor: '#ec5148',  // Default node color
+        defaultEdgeColor: '#ccc'      // Default edge color
+      }
+    });
+  </script>
+
+</body>
+</html>
